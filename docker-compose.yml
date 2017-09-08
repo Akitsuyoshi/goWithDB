@@ -1,0 +1,15 @@
+go:
+  build: ./
+  ports:
+    - 80:8080
+  volumes:
+    - .:/go/src/github.com/Akitsuyoshi/goWithDB
+  links:
+    - database
+
+database:
+  image: postgres:9.6
+  environment:
+    - POSTGRES_USER= "akiyamatsuyoshi"
+    - POSTGRES_PASS= "akiyamatsuyoshi"
+    - POSTGRES_NAME= "akiyamatsuyoshi"
