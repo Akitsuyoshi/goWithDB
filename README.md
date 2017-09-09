@@ -17,9 +17,11 @@ This simple api is written in golang.
 
  `$ docker build -t gowithdb .`
 
-3. Run the image
+3. Run the test
 
- `$ `
+ ```
+ 
+ ```
 
 
 

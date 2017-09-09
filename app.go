@@ -1,4 +1,3 @@
-// app.go
 package main
 
 import (
@@ -20,9 +19,10 @@ type App struct {
 }
 
 func (a *App) Initialize(user, password, dbname string) {
-
 	connectionString :=
-		fmt.Sprintf("sslmode=disable user=%s password=%s dbname=%s", user, password, dbname)
+		fmt.Sprintf("sslmode=disable user=postgres password=%s dbname=postgres host=database", password)
+
+	var _, _ = user, dbname
 
 	var err error
 	a.DB, err = sql.Open("postgres", connectionString)
@@ -43,7 +43,7 @@ func (a *App) initializeRoutes() {
 }
 
 func (a *App) Run(addr string) {
-	log.Fatal(http.ListenAndServe(":8000", a.Router))
+	log.Fatal(http.ListenAndServe(":8080", a.Router))
 }
 
 func (a *App) getProduct(w http.ResponseWriter, r *http.Request) {

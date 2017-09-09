@@ -1,6 +1,6 @@
 // main_test.go
 
-package main_test
+package main
 
 import (
 	"bytes"
@@ -11,18 +11,16 @@ import (
 	"os"
 	"strconv"
 	"testing"
-
-	"."
 )
 
-var a main.App
+var a App
 
 func TestMain(m *testing.M) {
 	os.Setenv("APP_DB_USERNAME", "akiyamatsuyoshi")
 	os.Setenv("APP_DB_PASSWORD", "akiyamatsuyoshi")
 	os.Setenv("APP_DB_NAME", "akiyamatsuyoshi")
 
-	a = main.App{}
+	a = App{}
 	a.Initialize(
 		os.Getenv("APP_DB_USERNAME"),
 		os.Getenv("APP_DB_PASSWORD"),
@@ -141,7 +139,7 @@ func TestUpdateProduct(t *testing.T) {
 	}
 
 	if m["name"] == originalProduct["name"] {
-		t.Errorf("Expected the name to change from '%v'. Got '%v'", originalProduct["name"], m["name"], m["name"])
+		t.Errorf("Expected the name to change from '%v' to '%v'. Got '%v'", originalProduct["name"], m["name"], m["name"])
 	}
 
 	if m["price"] == originalProduct["price"] {
