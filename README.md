@@ -3,8 +3,7 @@
 This simple api is written in golang.
 
 ### Prerequisites
-1. You've already set your $GOPATH up in your local
-2. the knowledge of docker to use
+1. the knowledge of docker to use
 
 
 ### the settting to use
@@ -15,22 +14,14 @@ This simple api is written in golang.
 
 2. Build the Docker image
 
- `$ docker build -t gowithdb .`
+ `$ docker-compose build && docker-compose up`
 
-3. Run the test
+3. Run the test to confirm connection between db and api.
 
  ```
- 
+ $ docker exec -it gowithdb_go_1 bash
+ $ go test -v
+
  ```
 
-
-
-
-If you'd like to stop, follow the commands
-```
-// it shows the container ID, which is running
-$ docker ps
-
-// To stop the process with ID
-$ docker stop CONTAINER_ID
-```
+If you'd like to stop process, CTRL + C would work.
